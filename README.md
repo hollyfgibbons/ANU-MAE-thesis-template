@@ -71,8 +71,6 @@ All of these are included in TeX Live and MiKTeX distributions.
 3. Open **Menu** (top left) → **Compiler** → select **pdfLaTeX**
 4. Click **Recompile**
 
-Overleaf runs Biber automatically — no extra configuration needed.
-
 ---
 
 ## Using locally
