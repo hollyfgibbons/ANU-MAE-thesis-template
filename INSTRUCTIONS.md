@@ -1,5 +1,5 @@
 # How to use this template
-### A guide for MAE students — no LaTeX experience required
+### A guide for MAE students (no LaTeX experience required)
 
 ---
 
