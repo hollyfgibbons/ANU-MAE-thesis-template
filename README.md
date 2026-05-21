@@ -87,7 +87,6 @@ latexmk -C
 ## Zotero integration
 
 ### Option A: One-time export
-
 1. In Zotero, select your library or a collection
 2. **File → Export Library** (or right-click a collection → **Export Collection**)
 3. Format: **Better BibLaTeX** *(requires the Better BibTeX plugin — see Option B)*
@@ -95,19 +94,12 @@ latexmk -C
 5. In Overleaf: upload the new `.bib` via the file tree on the left
 
 ### Option B: Continuous sync (recommended)
-
 1. Install the [Better BibTeX plugin](https://retorque.re/zotero-better-bibtex/) for Zotero
 2. Right-click your Zotero library or collection → **Export Collection**
    - Format: **Better BibLaTeX**
    - Tick **Keep updated**
 3. Zotero keeps the exported `.bib` file up to date on your computer automatically
 4. Re-upload to Overleaf whenever you add new references
-
-### Option C: Overleaf native Zotero sync (not recommended - it's not flexible to format changes)
-
-In Overleaf: **Menu → Sync → Zotero**
-
-This requires a linked Zotero account (configured under Overleaf account settings). Overleaf imports your entire Zotero library as a `.bib` file automatically.
 
 ### Citing references
 
