@@ -1,4 +1,4 @@
-# ANU MAE Thesis Template
+# ANU MAE thesis template
 
 A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) program at the Australian National University (ANU). The MAE thesis has an unusual structure with four independent field research projects, each with its own reference list.
 
