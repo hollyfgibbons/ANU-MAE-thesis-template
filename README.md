@@ -180,7 +180,7 @@ Only references cited within that chapter appear in that chapter's list. Numbers
 
 ## Reordering chapters
 
-In `main.tex`, reorder the `\include` lines — all numbering updates automatically:
+In `main.tex`, reorder the `\include` lines, all numbering updates automatically:
 
 ```latex
 \include{experience/experience}
