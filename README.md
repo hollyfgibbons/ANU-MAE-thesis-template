@@ -2,11 +2,7 @@
 
 A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) program at the Australian National University (ANU). The MAE thesis has an unusual structure with four independent field research projects, each with its own reference list.
 
----
-
-## About this template
-
-This template was created by me (Holly Gibbons, MAE 2025) to help future MAE students with formatting so they have more time to focus on their projects. This template will allow MAE Scholars get started with their thesis without having to build a LaTeX setup from scratch. The original code and structure are my own work which I used for my own thesis; Claude (Anthropic's AI assistant) was used to help develop and document the template.
+This template was created by me (Holly Gibbons, MAE 2025) to help future MAE students with formatting, allowing them to focus more on their projects. It enables MAE Scholars to get started on their thesis without needing to build a LaTeX setup from scratch. The original code and structure are my own work, developed for my thesis; Claude (Anthropic’s AI assistant) was used to assist in developing and documenting the template.
 
 If you run into any issues using this template, or if there is anything you would like to see added or improved, I would be very happy to hear from you: hollyfgibbons@outlook.com
 
@@ -93,7 +89,7 @@ latexmk -C
 
 ## Zotero integration
 
-### Option A — One-time export
+### Option A: One-time export
 
 1. In Zotero, select your library or a collection
 2. **File → Export Library** (or right-click a collection → **Export Collection**)
@@ -101,7 +97,7 @@ latexmk -C
 4. Save as `reference_library.bib` and replace the existing file in your project
 5. In Overleaf: upload the new `.bib` via the file tree on the left
 
-### Option B — Continuous sync (recommended)
+### Option B: Continuous sync (recommended)
 
 1. Install the [Better BibTeX plugin](https://retorque.re/zotero-better-bibtex/) for Zotero
 2. Right-click your Zotero library or collection → **Export Collection**
@@ -110,7 +106,7 @@ latexmk -C
 3. Zotero keeps the exported `.bib` file up to date on your computer automatically
 4. Re-upload to Overleaf whenever you add new references
 
-### Option C — Overleaf native Zotero sync (not recommended - it's not flexible to format changes)
+### Option C: Overleaf native Zotero sync (not recommended - it's not flexible to format changes)
 
 In Overleaf: **Menu → Sync → Zotero**
 
@@ -128,7 +124,7 @@ The citation key (e.g. `smith_title_2024`) is shown in the **Citation Key** colu
 
 ## Customising the template
 
-### Step 1 — Replace placeholder text
+### Step 1: Replace placeholder text
 
 Search for the following strings and replace them throughout the project:
 
@@ -144,7 +140,7 @@ Search for the following strings and replace them throughout the project:
 | `Dr SUPERVISOR NAME` | `titlepage/titlepage.tex` |
 | `PROJECT TITLE 1–4` | `data_analysis/data_analysis.tex` through `outbreak/outbreak.tex` |
 
-### Step 2 — Add your placement logo
+### Step 2: Add your field placement logo
 
 In `titlepage/titlepage.tex`, replace the TikZ placeholder block with:
 
@@ -154,7 +150,7 @@ In `titlepage/titlepage.tex`, replace the TikZ placeholder block with:
 
 Upload your logo file to the `titlepage/` folder.
 
-### Step 3 — Add your abbreviations
+### Step 3: Add your abbreviations
 
 In `abbreviations.tex`:
 
@@ -173,7 +169,7 @@ For plurals:
 ]{KEY}{SHORT}{Long form singular}
 ```
 
-### Step 4 — Add your references
+### Step 4: Add your references
 
 Replace `reference_library.bib` with your Zotero export (see Zotero integration above).
 
