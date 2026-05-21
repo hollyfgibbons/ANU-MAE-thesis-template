@@ -68,7 +68,7 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 ### How to open the template locally
 1. Install a LaTeX distribution (e.g., TeX Live or MikTeX)
 2. Install package `latexmk`
-3. Create a new .tex file (if using MikTex select the image of the notepad with a 'T'
+3. Create a new .tex file (MikTex - select the image of the notepad with a 'T')
 4. From the project root, run:
 ```bash
 latexmk main.tex
