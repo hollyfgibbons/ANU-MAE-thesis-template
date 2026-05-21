@@ -48,43 +48,40 @@ Best of luck with your thesis!!!!!!!!!!!
 
 ---
 
-## Prerequisites
+## How do I use the template?
 
-| Tool | Purpose |
-|------|---------|
-| pdfLaTeX | Main compiler |
-| Biber | Bibliography processor (replaces BibTeX) |
-| latexmk | Build orchestration (optional, recommended locally) |
+The template can either by used in Overleaf (online) or locally on your computer. 
 
-All of these are included in TeX Live and MiKTeX distributions.
 
----
+ Overleaf | Locally |
+|----------|--------|
+| Runs in your browser | Runs on your computer |
+| No software installation required | Requires installing a LaTeX distribution and tools|
+| Compilation happens on Overleaf servers | Compilation happens locally on your machine |
+| Easy setup and quick to get started | More setup required initially |
+| Built-in collaboration and sharing | Collaboration requires external tools (e.g., Git) |
+| Limited control over environment | Full control over packages and build process |
+| Requires internet connection | Works offline |
+| Suitable for beginners | Better for advanced users or large projects |
 
-## Using on Overleaf
-
-1. Download this repository as a ZIP file (GitHub: **Code → Download ZIP**)
-2. In Overleaf: **New Project → Upload Project** → select the ZIP
-3. Open **Menu** (top left) → **Compiler** → select **pdfLaTeX**
+### Overleaf
+1. Download this repository as a ZIP file (*GitHub → Code → Download ZIP*)  
+2. In Overleaf: *New Project → Upload Project* → select the ZIP  
+3. Open *Menu* (top left) → *Compiler* → select **pdfLaTeX**  
 4. Click **Recompile**
 
----
-
-## Using locally
-
-With `latexmk` installed, run from the project root:
-
+### Locally
+1. Install a LaTeX distribution (e.g., TeX Live or MikTeX) and `latexmk`  
+2. From the project root, run:
 ```bash
 latexmk main.tex
 ```
+3. The included `latexmkrc` file configures `latexmk` to use pdfLaTeX and Biber automatically 
 
-The included `latexmkrc` file tells latexmk to use pdfLaTeX and Biber automatically.
-
-To clean auxiliary files:
-
+4. To clean auxiliary files:
 ```bash
 latexmk -C
 ```
-
 ---
 
 ## Zotero integration
