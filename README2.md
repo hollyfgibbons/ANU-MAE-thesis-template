@@ -2,49 +2,11 @@
 
 A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) program at the Australian National University (ANU). The MAE thesis has an unusual structure with four independent field research projects, each with its own reference list.
 
-This template was created by me (Holly Gibbons, MAE 2025) to help future MAE students with formatting, allowing them to focus more on their projects. It enables MAE Scholars to get started on their thesis without needing to build a LaTeX setup from scratch. The original code and structure are my own work, developed for my thesis; Claude (Anthropic's AI assistant) was used to assist in developing and documenting the template.
+This template was created by me (Holly Gibbons, MAE 2025), to help future MAE students with formatting, allowing them to focus more on their projects. It will enable Scholars to get started on their thesis without needing to build a LaTeX setup from scratch. The original code and structure are my own work, developed for my own thesis; Claude (Anthropic's AI assistant) was used to assist in developing and documenting the template.
 
 If you run into any issues using this template, or if there is anything you would like to see added or improved, I would be very happy to hear from you: hollyfgibbons@outlook.com
 
 Best of luck with your thesis!!!!!!!!!!!
-
----
-
-## Project structure
-
-```
-├── main.tex                             # Master document — start here
-├── preamble.tex                         # All packages, fonts, and formatting
-├── abbreviations.tex                    # Abbreviation definitions
-├── reference_library.bib                # BibTeX bibliography
-│
-├── front_matter/
-│   ├── abstract.tex
-│   ├── acknowledgement.tex
-│   ├── abbreviations_static.tex         # Printed abbreviations list (auto-generated)
-│   └── originality_statement.tex
-│
-├── titlepage/
-│   ├── titlepage.tex
-│   └── anu-logo-colour.pdf
-│
-├── experience/experience.tex            # Ch 1: Placement overview and competencies
-├── data_analysis/data_analysis.tex      # Ch 2: Project 1 — Data analysis
-├── surveillance/surveillance.tex        # Ch 3: Project 2 — Surveillance system
-├── epistudy/epistudy.tex                # Ch 4: Project 3 — Epidemiological study
-├── outbreak/outbreak.tex                # Ch 5: Project 4 — Outbreak investigation
-└── teaching/teaching.tex                # Ch 6: Teaching and field activities
-```
-
----
-
-## Key features
-
-- **Per-chapter reference lists**: each chapter ends with its own numbered reference list, using `biblatex` with `refsection=chapter`. Citation numbers restart at [1] in each chapter.
-- **Local TOC, list of figures, and list of tables** per chapter, using `etoc`.
-- **Automatic abbreviation expansion**: abbreviations expand in full on first use per chapter (e.g. "polymerase chain reaction (PCR)") using `glossaries-extra`.
-- **Vancouver-style citations**: superscript numbers, sorted by order of appearance.
-- **ANU-compliant formatting**: Helvetica font, 2.5 cm margins, A4 paper, originality statement.
 
 ---
 
@@ -70,7 +32,7 @@ You write your content in `.tex` files using Overleaf (or a local text editor). 
 
 ## Getting started
 
-The template can be downloaded and used in either Overleaf (online) or locally on your computer.
+The template can be downloaded and used in either Overleaf (online) or locally on your computer. Please see the comparison table below to help decide which one is best for you.
 
 | Overleaf | Locally |
 |----------|--------|
@@ -83,15 +45,31 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 | Requires internet connection | Works offline |
 | Suitable for beginners | Better for advanced users or large projects |
 
-### Overleaf
+### How to open the template in Overleaf
 1. Download this repository as a ZIP file (*GitHub → Code → Download ZIP*)
 2. In Overleaf: *New Project → Upload Project* → select the ZIP
 3. Open *Menu* (top left) → *Compiler* → select **pdfLaTeX**
 4. Click **Recompile**
 
-### Locally
-1. Install a LaTeX distribution (e.g., TeX Live or MikTeX) and `latexmk`
-2. From the project root, run:
+---
+
+> **Before you write anything in Overleaf**
+>
+> Check with your field supervisor that you have permission to use a cloud-based platform such as Overleaf before uploading any thesis content.
+>
+> Data sharing and confidentiality obligations can vary between placements. As an example of one approach, my placement agreed that I could use Overleaf provided that:
+> 1. only tables and figures were uploaded (no raw data) and
+> 2. any content written or uploaded was approved by my supervisor before being added to the project
+>
+> Your placement may have different requirements. If in doubt, ask your field supervisor before you begin.
+
+---
+
+### How to open the template locally
+1. Install a LaTeX distribution (e.g., TeX Live or MikTeX)
+2. Install package `latexmk`
+3. Create a new .tex file (if using MikTex select the image of the notepad with a 'T'
+4. From the project root, run:
 ```bash
 latexmk main.tex
 ```
@@ -104,19 +82,10 @@ latexmk -C
 
 ---
 
-> **Before you upload anything to Overleaf**
->
-> Check with your field supervisor that you have permission to use a cloud-based platform such as Overleaf before uploading any thesis content.
->
-> Data sharing and confidentiality obligations can vary between placements. As an example of one approach, my placement agreed that I could use Overleaf provided that:
-> 1. only tables and figures were uploaded (no raw data) and
-> 2. any content written or uploaded was approved by my supervisor before being added to the project
->
-> Your placement may have different requirements. If in doubt, ask your field supervisor before you begin.
 
----
+## Setting up Zotero integration
 
-## Zotero integration
+This step will allow you to instantly cite references as you start writing in your chapters. I have outlined two options to set up integration with Zotero. I do not recommend using the automatic integration between Zotero and Overleaf because the data is much harder to format.
 
 ### Option A: One-time export
 1. In Zotero, select your library or a collection
@@ -143,7 +112,34 @@ The citation key (e.g. `smith_title_2024`) is shown in the **Citation Key** colu
 
 ---
 
-## Setting up the template
+## Outline of template structure
+
+```
+├── main.tex                             # Master document — start here
+├── preamble.tex                         # All packages, fonts, and formatting
+├── abbreviations.tex                    # Abbreviation definitions
+├── reference_library.bib                # BibTeX bibliography
+│
+├── front_matter/
+│   ├── abstract.tex
+│   ├── acknowledgement.tex
+│   ├── abbreviations_static.tex         # Printed abbreviations list (auto-generated)
+│   └── originality_statement.tex
+│
+├── titlepage/
+│   ├── titlepage.tex
+│   └── anu-logo-colour.pdf
+│
+├── experience/experience.tex            # Ch 1: Placement overview and competencies
+├── data_analysis/data_analysis.tex      # Ch 2: Project 1 — Data analysis
+├── surveillance/surveillance.tex        # Ch 3: Project 2 — Surveillance system
+├── epistudy/epistudy.tex                # Ch 4: Project 3 — Epidemiological study
+├── outbreak/outbreak.tex                # Ch 5: Project 4 — Outbreak investigation
+└── teaching/teaching.tex                # Ch 6: Teaching and field activities
+```
+---
+
+## Customising the template
 
 ### Step 1: Fill in your personal details
 
