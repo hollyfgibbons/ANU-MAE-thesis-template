@@ -50,7 +50,7 @@ Best of luck with your thesis!!!!!!!!!!!
 
 ## How do I use the template?
 
-The template can either by used in Overleaf (online) or locally on your computer. 
+The template can be downloaded and used in either Overleaf (online) or locally on your computer. 
 
 
  Overleaf | Locally |
