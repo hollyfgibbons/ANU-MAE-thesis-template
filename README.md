@@ -6,9 +6,9 @@ A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) progr
 
 ## About this template
 
-This template was created by Holly Gibbons (MAE 2025) to help future MAE students get started with their thesis without having to build a LaTeX setup from scratch. The original code and structure are Holly's own work; Claude (Anthropic's AI assistant) was used to help develop and document the template.
+This template was created by me (Holly Gibbons, MAE 2025) to help future MAE students with formatting so they have more time to focus on their projects. This template will allow MAE Scholars get started with their thesis without having to build a LaTeX setup from scratch. The original code and structure are my own work which I used for my own thesis; Claude (Anthropic's AI assistant) was used to help develop and document the template.
 
-If you run into any issues using this template, or if there is anything you would like to see added or improved, Holly would be very happy to hear from you: hollyfgibbons@outlook.com
+If you run into any issues using this template, or if there is anything you would like to see added or improved, I would be very happy to hear from you: hollyfgibbons@outlook.com
 
 Best of luck with your thesis!!!!!!!!!!!
 
