@@ -1,4 +1,4 @@
-# How to Use This Template
+# How to use this template
 ### A guide for MAE students — no LaTeX experience required
 
 ---
