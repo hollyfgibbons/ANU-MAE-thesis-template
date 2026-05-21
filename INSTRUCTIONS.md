@@ -7,9 +7,7 @@
 
 LaTeX (pronounced "lah-tech") is a document preparation system. Instead of formatting as you type (like Word), you write your content in plain text files (`.tex` files) and LaTeX automatically handles all the formatting — numbering chapters, figures, tables, and references, building the table of contents, and generating reference lists at the end of each chapter.
 
-**The key benefit for your MAE thesis:** every reference list is generated automatically, figures and tables are numbered and listed automatically, and the table of contents updates itself whenever you add content.
-
-### The golden rule
+**The key benefit for your MAE thesis:** Every reference list is generated automatically, figures and tables are numbered and listed automatically, and the table of contents updates itself whenever you add content.
 
 You write your content in `.tex` files using Overleaf (or a local text editor). When you click **Recompile** in Overleaf, LaTeX processes all the files and produces a PDF.
 
