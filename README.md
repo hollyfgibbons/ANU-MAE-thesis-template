@@ -44,11 +44,11 @@ Best of luck with your thesis!!!!!!!!!!!
 
 ## Key features
 
-- **Per-chapter reference lists** — each chapter ends with its own numbered reference list, using `biblatex` with `refsection=chapter`. Citation numbers restart at [1] in each chapter.
+- **Per-chapter reference lists**: each chapter ends with its own numbered reference list, using `biblatex` with `refsection=chapter`. Citation numbers restart at [1] in each chapter.
 - **Local TOC, list of figures, and list of tables** per chapter, using `etoc`.
-- **Automatic abbreviation expansion** — abbreviations expand in full on first use per chapter (e.g. "polymerase chain reaction (PCR)") using `glossaries-extra`.
-- **Vancouver-style citations** — superscript numbers, sorted by order of appearance.
-- **ANU-compliant formatting** — Helvetica font, 2.5 cm margins, A4 paper, originality statement.
+- **Automatic abbreviation expansion**: abbreviations expand in full on first use per chapter (e.g. "polymerase chain reaction (PCR)") using `glossaries-extra`.
+- **Vancouver-style citations**: superscript numbers, sorted by order of appearance.
+- **ANU-compliant formatting**: Helvetica font, 2.5 cm margins, A4 paper, originality statement.
 
 ---
 
