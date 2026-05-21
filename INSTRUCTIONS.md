@@ -5,13 +5,20 @@
 
 ## What is LaTeX?
 
-LaTeX (pronounced "lah-tech") is a document preparation system. Instead of formatting as you type (like Word), you write your content in plain text files (`.tex` files) and LaTeX automatically handles all the formatting — numbering chapters, figures, tables, and references, building the table of contents, and generating reference lists at the end of each chapter.
+LaTeX (pronounced "lah-tech") is a document preparation system. Instead of formatting as you type (like Word), you write your content in plain text files (`.tex` files) and LaTeX automatically handles all the formatting, including:
+* Numbering chapters, figures, tables, and references
+* Building the table of contents
+* Generating reference lists at the end of each chapter
 
-**The key benefit for your MAE thesis:** Every reference list is generated automatically, figures and tables are numbered and listed automatically, and the table of contents updates itself whenever you add content.
+**The key benefits for the MAE thesis:**
+* References for each chapter are generated automatically
+* Figures and tables are numbered and listed automatically, with updates applied when changes are made
+* The table of contents updates automatically as content is added
+* A list of abbreviations is generated automatically
+* Cross-referencing and hyperlinks remain functional when compiled as a PDF
+* No need to combine multiple PDFs or Microsoft Word documents to produce a complete thesis
 
 You write your content in `.tex` files using Overleaf (or a local text editor). When you click **Recompile** in Overleaf, LaTeX processes all the files and produces a PDF.
-
-> **If something looks wrong**, click the log icon in Overleaf (next to the Recompile button). Error messages tell you the file and line number where the problem occurred. The most common errors are a missing `}` or `\end{}`.
 
 ---
 
@@ -26,15 +33,17 @@ You write your content in `.tex` files using Overleaf (or a local text editor). 
 
 > **Before you upload anything to Overleaf**
 >
-> Check with your field placement supervisor that you have permission to use a cloud-based platform such as Overleaf before uploading any thesis content.
+> Check with your fieldsupervisor that you have permission to use a cloud-based platform such as Overleaf before uploading any thesis content.
 >
-> Data sharing and confidentiality obligations vary between placements. As an example of one approach: my placement agreed that I could use Overleaf provided that (1) only tables and figures were uploaded — no raw data, and (2) any content written or uploaded was approved by my supervisor before being added to the project.
+> Data sharing and confidentiality obligations can vary between placements. As an example of one approach, my placement agreed that I could use Overleaf provided that:
+> 1. only tables and figures were uploaded (no raw data) and
+> 2. any content written or uploaded was approved by my supervisor before being added to the project
 >
-> Your placement may have different requirements. If in doubt, ask your field supervisor and your ANU academic supervisor before you begin.
+> Your placement may have different requirements. If in doubt, ask your field supervisor before you begin.
 
 ---
 
-## Step 1 — Fill in your personal details
+## Step 1: Fill in your personal details
 
 ### Thesis title, name, and supervisors
 
@@ -53,17 +62,21 @@ Open `titlepage/titlepage.tex` and replace the placeholder text:
 
 ### PDF properties and originality statement
 
-Open `preamble.tex` and search for the section labelled `% ===================== Hyperlinks =====================`. Update:
+Open `preamble.tex` and search for the section labelled
+`% ===================== Hyperlinks =====================`
+Update:
 - `THESIS TITLE` → your thesis title
 - `YOUR FULL NAME` → your name
 - Add relevant keywords separated by commas
 
-Then search for `% ===================== Front Matter Environments =====================` and update:
+Then search for
+`% ===================== Front Matter Environments =====================`
+Update:
 - `YOUR FULL NAME` → your name
 - `DATE OF SUBMISSION` → e.g. `1st~October~2025`  
   *(The `~` symbol prevents a line break between the day and month — keep it)*
 
-### Placement logo
+### Field placement logo
 
 Upload your placement organisation's logo to the `titlepage/` folder (as a `.png` or `.pdf`).
 
@@ -75,7 +88,7 @@ In `titlepage/titlepage.tex`, find the comment `% Replace the block below with y
 
 ---
 
-## Step 2 — Choose your document format
+## Step 2: Choose your document format
 
 ANU requires different margins depending on how your thesis will be submitted. The template defaults to the digital submission format. If you need to produce a print-ready version, change **one line in each of two files** — keeping the option number the same in both.
 
@@ -93,7 +106,7 @@ To activate an option, remove the `%` at the start of that line, and add `%` to 
 
 ---
 
-## Step 3 — Name your chapters
+## Step 3: Name your chapters
 
 Open each chapter file and replace `PROJECT TITLE 1` (or 2, 3, 4) with your actual project title:
 
@@ -106,7 +119,7 @@ Open each chapter file and replace `PROJECT TITLE 1` (or 2, 3, 4) with your actu
 
 ---
 
-## Step 4 — Write your content
+## Step 4: Write your content
 
 Each chapter is a separate `.tex` file. Open the file for the chapter you want to write and add your text below the relevant section heading.
 
@@ -135,7 +148,7 @@ These characters have special meaning in LaTeX. If you need to type them in your
 
 ---
 
-## Step 5 — Add a figure
+## Step 5: Add a figure
 
 A figure is any image — an epicurve, a map, a chart exported from R/Stata/SPSS/Excel.
 
@@ -175,7 +188,7 @@ This automatically produces: "As shown in Figure 1, cases peaked in week 3." —
 
 ---
 
-## Step 6 — Add a table
+## Step 6: Add a table
 
 The simplest approach is to export your table from R, Stata, or Excel as a `.png` image and include it like a figure — but inside a `table` environment so LaTeX treats it as a table (numbering it in the list of tables).
 
@@ -212,7 +225,7 @@ This produces: "Table 1 shows the distribution of cases by age group."
 
 ---
 
-## Step 7 — Abbreviations
+## Step 7: Abbreviations
 
 The abbreviations system works in two places that are connected automatically:
 
@@ -272,7 +285,7 @@ The abbreviations page in the front matter is generated automatically. It lists 
 
 ---
 
-## Step 8 — Cite a reference
+## Step 8: Cite a reference
 
 ### Step 7a — Add the reference to your `.bib` file
 
@@ -325,7 +338,7 @@ This inserts compressed superscripts like ¹⁻³.
 
 ---
 
-## Step 9 — Cross-reference a section or appendix
+## Step 9: Cross-reference a section or appendix
 
 You can reference any section, figure, table, or appendix anywhere in the document:
 
@@ -340,7 +353,7 @@ The label must be defined in the relevant file with `\label{...}`. Each chapter 
 
 ---
 
-## Step 10 — Remove empty local lists
+## Step 10: Remove empty local lists
 
 At the top of each chapter there is a local list of tables and a local list of figures. If a chapter has no tables or figures, these pages will be blank and should be removed.
 
@@ -354,7 +367,7 @@ At the top of each chapter there is a local list of tables and a local list of f
 
 ---
 
-## Step 11 — Add or modify sections
+## Step 11: Add or modify sections
 
 Each chapter uses `\section{}`, `\subsection{}`, and `\subsubsection{}` to organise content:
 
@@ -379,7 +392,7 @@ The `*` means the paragraph heading is not numbered.
 
 ---
 
-## Step 12 — Add an appendix to a chapter
+## Step 12: Add an appendix to a chapter
 
 Each chapter has a `\begin{subappendices}...\end{subappendices}` block at the end. Inside it, each appendix is a `\section{}`.
 
