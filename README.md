@@ -146,9 +146,11 @@ Citing a reference requires a citation key (e.g. `smith_title_2024`), which can 
 
 ## Customising the template
 
-### Step 1: Fill in your details (thesis title, name and supervisors)
+### Step 1: Fill in your details
 
-Open `titlepage/titlepage.tex` and replace the placeholder text:
+**Title page:**
+
+1. Open `titlepage/titlepage.tex` and replace the placeholder text:
 
 | Find this | Replace with |
 |---|---|
@@ -161,42 +163,36 @@ Open `titlepage/titlepage.tex` and replace the placeholder text:
 | `Ms SUPERVISOR NAME 1` | Your first field supervisor |
 | `Mr SUPERVISOR NAME 2` | Your second field supervisor (remove if not needed)|
 
-#### PDF properties and originality statement
+2. Open `titlepage/` folder and upload placement organisation logo (as a `.png` or `.pdf`).
 
-Open `preamble.tex` and search for the section labelled\
-`% ===================== Hyperlinks =====================`\
-Update details below:
-- `THESIS TITLE` → your thesis title
-- `YOUR FULL NAME` → your name
-- Add relevant keywords separated by commas
-
-In `preamble.tex` search for the section labelled\
-`% ===================== Front Matter Environments =====================`\
-Update details below:
-- `YOUR FULL NAME` → your name
-- `DATE OF SUBMISSION` → e.g. `1st~October~2025`
-  *(The `~` symbol prevents a line break between the day and month)*
-
-Open `originality_statement.tex` in the `Front Matter` folder\
-Update detail below:
-- `PLACEMENT` → your thesis title
-  
-
-#### Field placement logo
-
-Upload your placement organisation's logo to the `titlepage/` folder (as a `.png` or `.pdf`).
-
-In `titlepage/titlepage.tex`, find the comment `% Replace the block below with your placement logo` and replace the TikZ grey-box placeholder block with:
+- In `titlepage/titlepage.tex`, find the comment `% Replace the block below with your placement logo` and replace the TikZ grey-box placeholder block with:
 
 ```latex
 \includegraphics[height=3.8cm]{titlepage/your_logo_filename.png}
 ```
 
+**Originality statement:**
+
+3. Open `originality_statement.tex` in the `Front Matter` folder
+- `PLACEMENT` → Your department/organisation
+
+4. In `preamble.tex` search: `% ===================== Front Matter Environments =====================`
+- `YOUR FULL NAME` → your name
+- `DATE OF SUBMISSION` → e.g. `1st~October~2025`
+  *(The `~` symbol prevents a line break between the day and month)*
+
+**Hyperlinks:**
+
+5. Open `preamble.tex` and search: `% ===================== Hyperlinks =====================`
+- `THESIS TITLE` → your thesis title
+- `YOUR FULL NAME` → your name
+- Add relevant keywords separated by commas
+
 ---
 
 ### Step 2: Choose your document format
 
-ANU requires different margins depending on how your thesis will be submitted. The template defaults to the digital submission format. If you need to produce a print-ready version, change **one line in each of two files** — keeping the option number the same in both.
+ANU requires different margins depending on how your thesis will be submitted. The template defaults to the digital submission format. If you need to produce a print-ready version, change **one line in the `main.tex` and `preamble.tex` files** — keeping the option number the same in both.
 
 **In `main.tex`**, activate the correct `\documentclass` option:
 
