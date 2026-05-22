@@ -132,17 +132,6 @@ If you are using Overleaf, I do not suggest using the automated integration with
 3. Zotero keeps the exported `.bib` file up to date on your computer automatically
 4. Re-upload to Overleaf whenever you add new references
 
-### Citing references in `.tex` files
-
-```latex
-Write text that requires referencing here.\cite{author_keyword_year}   % → superscript number in text
-```
-
-Citing a reference requires a citation key (e.g. `smith_title_2024`), which can be found in the **Citation Key** column in Zotero. To view the **Citation Key** column in Zotero:
-1. Install Better BibTeX
-2. **View → Columns → More Columns → Citation Key**
-
----
 
 ## Customising the template
 
@@ -270,9 +259,9 @@ A figure is any image, an epicurve, a map, a chart exported from R/Stata/SPSS/Ex
 
 | Syntax | Description |
 |---|---|
-| `[H]` | Places the figure **H**ere — at this exact position in the text |
+| `[H]` | Places the figure **H**ere (at this exact position in the text) |
 | `\centering` | Centres the image on the page |
-| `width=0.85\textwidth` | Sets the image width to 85% of the text width — adjust as needed |
+| `width=0.85\textwidth` | Sets the image width to 85% of the text width (adjust as needed) |
 | `{data_analysis/figures/my_figure.png}` | The path to your image file |
 | `\caption{...}` | The caption that appears **below** the figure |
 | `\label{fig:epicurve}` | A unique name for cross-referencing, **must start with `fig:`** |
@@ -321,8 +310,9 @@ The table number will update automatically if you add or move tables.
 
 The abbreviations system works in two places that are connected automatically:
 
-- **`abbreviations.tex`** — where you define abbreviations. This drives both the in-text expansion and the printed front matter list.
-- **`front_matter/abbreviations_static.tex`** — the abbreviations page printed in the thesis front matter. This generates itself automatically from your `\gls{}` usage — you do not need to edit it.
+- **`abbreviations.tex`:** where you define abbreviations. This drives both the in-text expansion and the printed front matter list. I have kept all the abbreviations I used for my thesis, feel free to add or remove abbrevations.
+  
+- **`front_matter/abbreviations_static.tex`:** the abbreviations page printed in the thesis front matter. This generates a list of abbrevations that were actually used in your overall thesis. You do not need to edit this `.tex` file.
 
 #### Defining an abbreviation
 
@@ -333,9 +323,9 @@ Open `abbreviations.tex` and add a line:
 ```
 
 The three parts are:
-1. `{WHO}` — the **key** (what you type in `\gls{WHO}` — must be unique, no spaces)
-2. `{WHO}` — the **short form** (what appears after first use, e.g. "WHO")
-3. `{World Health Organization}` — the **long form** (what appears on first use)
+1. `{WHO}`: the **key** (what you type in `\gls{WHO}` — must be unique, no spaces)
+2. `{WHO}`: the **short form** (what appears after first use, e.g. "WHO")
+3. `{World Health Organization}`: the **long form** (what appears on first use)
 
 #### Using an abbreviation in your text
 
@@ -348,7 +338,7 @@ Data were submitted to the \gls{WHO} surveillance system.
 - **First use in the chapter:** "Data were submitted to the World Health Organization (WHO) surveillance system."
 - **All subsequent uses:** "Data were submitted to the WHO surveillance system."
 
-Abbreviation tracking resets automatically at the start of each chapter, so each chapter re-expands abbreviations on first use. This is handled by `\glsresetall[abbreviations]` in each chapter file — do not remove those lines.
+Abbreviation tracking resets automatically at the start of each chapter, so each chapter re-expands abbreviations on first use. This is handled by `\glsresetall[abbreviations]` in each chapter file, do not remove those lines.
 
 #### For plural forms
 
@@ -367,19 +357,18 @@ To define a plural, use this format in `abbreviations.tex`:
 
 #### The front matter list
 
-The abbreviations page in the front matter is generated automatically. It lists — in alphabetical order, in the same visual style as the rest of the front matter — every abbreviation you used with `\gls{}` anywhere in your thesis. Abbreviations defined in `abbreviations.tex` but never used with `\gls{}` are excluded.
+The abbreviations page in the front matter is generated automatically. It lists abbreviations in alphabetical order, in the same visual style as the rest of the front matter, every abbreviation you used with `\gls{}` anywhere in your thesis. Abbreviations defined in `abbreviations.tex`. If you do not use `\gls{}` in your text for an abbreviation it will not be included in your automatically generated abbrevation list in the front matter.
 
 **You do not need to edit `front_matter/abbreviations_static.tex`.** Recompile your document (twice if needed in Overleaf) and the list updates itself.
 
-> **If an abbreviation is missing from the front matter list**, check that you used `\gls{KEY}` in your text — abbreviations typed manually (not via `\gls{}`) are not tracked.
+> **If an abbreviation is missing from the front matter list**, check that you used `\gls{KEY}` in your text, abbreviations typed manually (not via `\gls{}`) are not tracked.
 
 ---
 
-### Step 8: Cite a reference
+### Step 8: Citing references in `.tex` files
 
-#### Step 8a — Add the reference to your `.bib` file
-
-The easiest way is to export from Zotero (see [Zotero integration](#zotero-integration) above). If adding manually, open `reference_library.bib` and add an entry:
+Followed the instrcutions provided in the section:
+Your `reference_library.bib` file will contain reference entires similar to the examples below:
 
 **Journal article:**
 ```bibtex
@@ -406,24 +395,24 @@ The easiest way is to export from Zotero (see [Zotero integration](#zotero-integ
 }
 ```
 
-> **Tip:** For organisation authors (not a person), wrap the name in double braces: `{{World Health Organization}}` — this stops LaTeX treating the first word as a first name.
+Citing either of the references above, you will need their **Citation Key**. The citation key is the first item after the `@article{` or `@online{`:\
+In the examples above it is `smith_article_title_2024` and `who_webpage_2025`.
 
-The citation key is the first item after the `@article{` or `@online{` — in the example above it is `smith_article_title_2024`. You choose the key; the convention is `lastname_word_year`.
-
-#### Step 8b — Cite in your text
+Citation key's can also be found in the citation key column in Zotero. To view the citation key column in Zotero:
+1. Install Better BibTeX
+2. **View → Columns → More Columns → Citation Key**
 
 ```latex
-Blood lead levels above 5 µg/dL are considered elevated.\cite{smith_article_title_2024}
+Write text that requires referencing here.\cite{smith_article_title_2024}   % → superscript number in text
 ```
 
-This inserts a superscript number (e.g. ¹) in your text. The full reference appears automatically in the **References** section at the end of that chapter — you do not need to do anything else.
+This inserts a superscript number (e.g. ¹) in your text. The full reference appears automatically in the **References** section at the end of that chapter, you do not need to do anything else.
 
 **Cite multiple references at once:**
 
 ```latex
-This finding has been reported across several studies.\cite{smith_2024,jones_2023,taylor_2022}
+This finding has been reported across several studies.\cite{smith_article_title_2024,who_webpage_2025}
 ```
-
 This inserts compressed superscripts like ¹⁻³.
 
 ---
@@ -509,7 +498,7 @@ Upload your file to the chapter's `appendices/` subfolder before compiling. Adju
 
 ---
 
-## Per-chapter reference lists
+## Reference lists for each chapter
 
 Each chapter file ends with:
 
@@ -525,7 +514,7 @@ Only references cited within that chapter appear in that chapter's list. Numbers
 
 ## Reordering chapters
 
-In `main.tex`, simply reorder the `\include` lines — all numbering updates automatically:
+In `main.tex`, simply reorder the `\include` lines, all numbering updates automatically:
 
 ```latex
 \include{experience/experience}
