@@ -135,7 +135,7 @@ If you are using Overleaf, I do not suggest using the automated integration with
 ### Citing references in `.tex` files
 
 ```latex
-Write your text that requires referencing here.\cite{author_keyword_year}   % → superscript number in text
+Write text that requires referencing here.\cite{author_keyword_year}   % → superscript number in text
 ```
 
 Citing a reference requires a citation key (e.g. `smith_title_2024`), which can be found in the **Citation Key** column in Zotero. To view the **Citation Key** column in Zotero:
@@ -146,9 +146,7 @@ Citing a reference requires a citation key (e.g. `smith_title_2024`), which can 
 
 ## Customising the template
 
-### Step 1: Fill in your personal details
-
-#### Thesis title, name, and supervisors
+### Step 1: Fill in your details (thesis title, name and supervisors)
 
 Open `titlepage/titlepage.tex` and replace the placeholder text:
 
@@ -161,23 +159,28 @@ Open `titlepage/titlepage.tex` and replace the placeholder text:
 | `PLACEMENT DEPARTMENT` | Your department/organisation |
 | `Dr SUPERVISOR NAME` | Your academic supervisor |
 | `Ms SUPERVISOR NAME 1` | Your first field supervisor |
-| `Mr SUPERVISOR NAME 2` | Your second field supervisor |
+| `Mr SUPERVISOR NAME 2` | Your second field supervisor (remove if not needed)|
 
 #### PDF properties and originality statement
 
-Open `preamble.tex` and search for the section labelled
-`% ===================== Hyperlinks =====================`
-Update:
+Open `preamble.tex` and search for the section labelled\
+`% ===================== Hyperlinks =====================`\
+Update details below:
 - `THESIS TITLE` → your thesis title
 - `YOUR FULL NAME` → your name
 - Add relevant keywords separated by commas
 
-Then search for
-`% ===================== Front Matter Environments =====================`
-Update:
+In `preamble.tex` search for the section labelled\
+`% ===================== Front Matter Environments =====================`\
+Update details below:
 - `YOUR FULL NAME` → your name
 - `DATE OF SUBMISSION` → e.g. `1st~October~2025`
-  *(The `~` symbol prevents a line break between the day and month — keep it)*
+  *(The `~` symbol prevents a line break between the day and month)*
+
+Open `originality_statement.tex` in the `Front Matter` folder\
+Update detail below:
+- `PLACEMENT` → your thesis title
+  
 
 #### Field placement logo
 
