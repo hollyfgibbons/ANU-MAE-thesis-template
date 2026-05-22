@@ -13,10 +13,7 @@ Best of luck with your thesis!!!!!!!!!!!
 ## What is LaTeX?
 ### A guide for MAE students (no LaTeX experience required)
 
-LaTeX (pronounced "lah-tech") is a document preparation system. Instead of formatting as you type (like Word), you write your content in plain text files (`.tex` files) and LaTeX automatically handles all the formatting, including:
-* Numbering chapters, figures, tables, and references
-* Building the table of contents
-* Generating reference lists at the end of each chapter
+LaTeX (pronounced "lah-tech") is a document preparation system. Instead of formatting as you type (like Word), you write your content in plain text files (`.tex` files) and LaTeX automatically handles all the formatting.
 
 **The key benefits for the MAE thesis:**
 * References for each chapter are generated automatically
@@ -431,7 +428,7 @@ Your `reference_library.bib` file will contain reference entires similar to the 
 
 You will need the **Citation Key** for each of your references in order to cite them.
 
-In these examples, the citation keys is the first item after `@article{` or `@online{`: which are `smith_article_title_2024` and `who_webpage_2025`.
+In these examples, the citation key is the first item after `@article{` or `@online{`: which are `smith_article_title_2024` and `who_webpage_2025`.
 
 Citation key's can also be found in the citation key column in Zotero. To view the citation key column in Zotero:
 1. Install Better BibTeX
@@ -452,9 +449,9 @@ This inserts compressed superscripts like ¹⁻³.
 
 ---
 
-### Step 9: Cross-reference a section or appendix
+### Step 9: Cross-referencing
 
-You can reference any section, figure, table, or appendix anywhere in the document:
+You can reference any chapter, section, figure, table, or appendix anywhere in the document:
 
 ```latex
 \cref{chap:project_1}    →  "Chapter 2"
