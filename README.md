@@ -94,18 +94,7 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 ---
 
 ### How to open the template locally
-1. Install a LaTeX distribution (e.g., TeX Live or MikTeX) and LaTex writing environment (e.g., Texstudio)
-3. Install package `latexmk`
-5. From the project root, run:
-```bash
-latexmk main.tex
-```
-3. The included `latexmkrc` file configures `latexmk` to use pdfLaTeX and Biber automatically
-
-4. To clean auxiliary files:
-```bash
-latexmk -C
-```
+INSTRUCTIONS COMING SOON
 
 ---
 
@@ -367,7 +356,8 @@ The abbreviations page in the front matter is generated automatically. It lists 
 
 ### Step 8: Citing references in `.tex` files
 
-Followed the instrcutions provided in the section:
+Followed the instrcutions provided in the section: [Setting up reference integration](https://github.com/hollyfgibbons/ANU-MAE-thesis-template/blob/main/README.md#setting-up-reference-integration)
+
 Your `reference_library.bib` file will contain reference entires similar to the examples below:
 
 **Journal article:**
