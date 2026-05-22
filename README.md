@@ -93,8 +93,56 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 
 ---
 
-### How to open the template locally
-INSTRUCTIONS COMING SOON
+### How to open the template locally (TeXstudio)
+
+#### Step 1: Download and install MiKTeX
+
+MiKTeX is the LaTeX engine that compiles your `.tex` files into a PDF.
+
+1. Go to [miktex.org/download](https://miktex.org/download) and download the Windows installer
+2. Run the installer — accept all defaults
+3. When asked *"Install missing packages on-the-fly"*, select **Yes**
+4. After installation, open the **MiKTeX Console** (search for it in the Start menu) and click **Check for updates**, then install any available updates
+
+#### Step 2: Download and install TeXstudio
+
+TeXstudio is the editor you write and compile your thesis in.
+
+1. Go to [texstudio.org](https://www.texstudio.org) and download the Windows installer
+2. Run the installer — accept all defaults
+
+#### Step 3: Configure the TeXstudio build sequence
+
+This is the most important step. By default, TeXstudio only runs one compile pass and misses the bibliography and abbreviations. You need to tell it to run the full sequence.
+
+1. Open TeXstudio
+2. Go to **Options → Configure TeXstudio → Build**
+3. Find the **"Build & View"** field (it will contain something like `txs:///compile | txs:///view`)
+4. Replace the entire contents of that field with:
+
+```
+txs:///pdflatex | txs:///biber | txs:///makeglossaries | txs:///pdflatex | txs:///pdflatex | txs:///view-pdf-internal
+```
+
+5. In the same Build panel, set:
+   - **Default Compiler:** pdfLaTeX
+   - **Default Bibliography Tool:** Biber
+
+6. Click **OK**
+
+#### Step 4: Open the template
+
+1. Download this repository as a ZIP file (*GitHub → Code → Download ZIP*)
+2. Extract the ZIP to a folder on your computer (e.g. `Documents/thesis`)
+3. In TeXstudio: **File → Open** → navigate to the folder and open `main.tex`
+
+#### Step 5: Compile
+
+Press **F5** (Build & View). TeXstudio will run pdflatex, biber, makeglossaries, and pdflatex twice automatically. The PDF will open in the panel on the right when compilation is complete.
+
+> **First compile note:** MiKTeX may prompt you to install missing packages on-the-fly the first time you compile. Click **Install** for each — this only happens once.
+
+> **If you see warnings but a PDF is produced**, that is normal for the first compile. Press **F5** again if any cross-reference numbers look wrong.
 
 ---
 

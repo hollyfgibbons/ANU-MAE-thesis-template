@@ -62,7 +62,7 @@
 % ===================== TOC and Lists =====================
 \usepackage[nottoc,notlof,notlot]{tocbibind}
 \usepackage[title,titletoc]{appendix}
-\usepackage[lof,lot]{etoc}
+\usepackage{etoc}
 
 \renewcommand{\contentsname}{Table of Contents}
 \renewcommand{\listfigurename}{List of Figures}
@@ -108,17 +108,45 @@
   \endgroup
 }
 
-% Rename etoc internals before overriding
-\let\etoclocallistoffigures\locallistoffigures
-\let\etoclocallistoftables\locallistoftables
+% ── Per-chapter local figure / table lists ─────────────────────────────────
+% etoc's [lof,lot] option conflicts with hyperref on LaTeX 2025-11-01 because
+% it redefines \addcontentsline via \def at \begin{document}, bypassing the
+% kernel hook system.  The reimplementation below avoids that:
+%   1. A hook mirrors each lof/lot \addcontentsline call into the .toc file
+%      as a custom 'lofitem'/'lotitem' entry.
+%   2. \locallistoffigures / \locallistoftables read these back per-chapter
+%      using etoc's \localtableofcontents, hiding all standard TOC entries.
+\makeatletter
+\AddToHookWithArguments{cmd/addcontentsline/before}[lof-to-toc]{%
+  \def\@ltl@ext{#1}%
+  \ifx\@ltl@ext\Etoc@lofext
+    \addtocontents{toc}{\protect\contentsline{lofitem}{#3}{\thepage}{}}%
+  \else
+    \ifx\@ltl@ext\Etoc@lotext
+      \addtocontents{toc}{\protect\contentsline{lotitem}{#3}{\thepage}{}}%
+    \fi
+  \fi
+}
+\makeatother
+
+\etocsetlevel{lofitem}{6}
+\etocsetlevel{lotitem}{6}
 
 \renewcommand{\locallistoffigures}{%
   \begingroup
   \RaggedRight
   \setlength{\parskip}{0.5em}
-  \etocsettocstyle{\section*{List of figures}}{}
-  \etocsetnexttocdepth{all}
-  \etoclocallistoffigures
+  \etocsettocstyle{\section*{List of figures}}{}%
+  \etocsetstyle{chapter}{}{}{}{}%
+  \etocsetstyle{section}{}{}{}{}%
+  \etocsetstyle{subsection}{}{}{}{}%
+  \etocsetstyle{subsubsection}{}{}{}{}%
+  \etocsetstyle{paragraph}{}{}{}{}%
+  \etocsetstyle{subparagraph}{}{}{}{}%
+  \etocsetstyle{lotitem}{}{}{}{}%
+  \etocsetstyle{lofitem}{}{}{\noindent\etocname\dotfill\etocpage\par}{}%
+  \etocsetnexttocdepth{6}%
+  \localtableofcontents
   \endgroup
 }
 
@@ -126,9 +154,17 @@
   \begingroup
   \RaggedRight
   \setlength{\parskip}{0.5em}
-  \etocsettocstyle{\section*{List of tables}}{}
-  \etocsetnexttocdepth{all}
-  \etoclocallistoftables
+  \etocsettocstyle{\section*{List of tables}}{}%
+  \etocsetstyle{chapter}{}{}{}{}%
+  \etocsetstyle{section}{}{}{}{}%
+  \etocsetstyle{subsection}{}{}{}{}%
+  \etocsetstyle{subsubsection}{}{}{}{}%
+  \etocsetstyle{paragraph}{}{}{}{}%
+  \etocsetstyle{subparagraph}{}{}{}{}%
+  \etocsetstyle{lofitem}{}{}{}{}%
+  \etocsetstyle{lotitem}{}{}{\noindent\etocname\dotfill\etocpage\par}{}%
+  \etocsetnexttocdepth{6}%
+  \localtableofcontents
   \endgroup
 }
 
@@ -149,7 +185,7 @@
 % Add new abbreviations to abbreviations.tex:
 %   \newabbreviation{KEY}{SHORT}{Long form}
 % Use in text with \gls{KEY}
-\usepackage[abbreviations,nomain,automake]{glossaries-extra}
+\usepackage[abbreviations,nomain]{glossaries-extra}
 \makeglossaries
 \input{abbreviations.tex}
 
