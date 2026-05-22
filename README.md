@@ -1,8 +1,8 @@
 # ANU MAE thesis template
 
-A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) program at the Australian National University (ANU). The MAE thesis has an unusual structure with four independent field research projects, each with its own reference list.
+A LaTeX template for the Master of Philosophy (Applied Epidemiology) (MAE) program at Australian National University (ANU). The MAE theses does not use a traditional structure as the theses is made up of multiple projects, each with their own reference list.
 
-This template was created by me (Holly Gibbons, MAE 2025), to help future MAE students with formatting, allowing them to focus more on their projects. It will enable Scholars to get started on their thesis without needing to build a LaTeX setup from scratch. The original code and structure are my own work, developed for my own thesis; Claude (Anthropic's AI assistant) was used to assist in developing and documenting the template.
+This template was created by me (Holly Gibbons, MAE 2025), to help future MAE students with formatting, allowing them to focus more on their projects and engaging in their field placements. It will enable Scholars to get started on their thesis without needing to build a LaTeX setup from scratch. The original code and structure are my own work, developed for my own thesis; Claude (Anthropic's AI assistant) was used to assist in developing and documenting the template.
 
 If you run into any issues using this template, or if there is anything you would like to see added or improved, I would be very happy to hear from you :)
 
@@ -27,6 +27,34 @@ LaTeX (pronounced "lah-tech") is a document preparation system. Instead of forma
 * No need to combine multiple PDFs or Microsoft Word documents to produce a complete thesis
 
 You write your content in `.tex` files using Overleaf (or a local text editor). When you click **Recompile** in Overleaf, LaTeX processes all the files and produces a PDF.
+
+---
+
+## Overview of template structure
+
+```
+├── main.tex                             # Master document — start here
+├── preamble.tex                         # All packages, fonts, and formatting
+├── abbreviations.tex                    # Abbreviation definitions
+├── reference_library.bib                # BibTeX bibliography
+│
+├── front_matter/
+│   ├── abstract.tex
+│   ├── acknowledgement.tex
+│   ├── abbreviations_static.tex         # Printed abbreviations list (auto-generated)
+│   └── originality_statement.tex
+│
+├── titlepage/
+│   ├── titlepage.tex
+│   └── anu-logo-colour.pdf
+│
+├── experience/experience.tex            # Ch 1: Placement overview and competencies
+├── data_analysis/data_analysis.tex      # Ch 2: Project 1 — Data analysis
+├── surveillance/surveillance.tex        # Ch 3: Project 2 — Surveillance system
+├── epistudy/epistudy.tex                # Ch 4: Project 3 — Epidemiological study
+├── outbreak/outbreak.tex                # Ch 5: Project 4 — Outbreak investigation
+└── teaching/teaching.tex                # Ch 6: Teaching and field activities
+```
 
 ---
 
@@ -66,10 +94,8 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 ---
 
 ### How to open the template locally
-1. Install a LaTeX distribution (e.g., TeX Live or MikTeX)
-2. Install Latex writing environment (e.g., Texstudio)
+1. Install a LaTeX distribution (e.g., TeX Live or MikTeX) and LaTex writing environment (e.g., Texstudio)
 3. Install package `latexmk`
-4. Create a new .tex file (MikTex - select the image of the notepad with a 'T')
 5. From the project root, run:
 ```bash
 latexmk main.tex
@@ -84,9 +110,11 @@ latexmk -C
 ---
 
 
-## Setting up Zotero integration
+## Setting up reference integration
 
-This step will allow you to instantly cite references as you start writing in your chapters. I have outlined two options to set up integration with Zotero. I do not recommend using the automatic integration between Zotero and Overleaf because the data is much harder to format.
+For referencing in LaTex I suggest using a reference management software such as Zotero. I have outlined two options for setting up reference integration with Zotero.
+
+If you are using Overleaf, I do not suggest using the automated integration with Zotero because the imported reference data cannot be edited and is harder to format.
 
 ### Option A: One-time export
 1. In Zotero, select your library or a collection
@@ -100,44 +128,20 @@ This step will allow you to instantly cite references as you start writing in yo
 2. Right-click your Zotero library or collection → **Export Collection**
    - Format: **Better BibLaTeX**
    - Tick **Keep updated**
+   - Save as `reference_library.bib`
 3. Zotero keeps the exported `.bib` file up to date on your computer automatically
 4. Re-upload to Overleaf whenever you add new references
 
-### Citing references
+### Citing references in `.tex` files
 
 ```latex
-Text here.\cite{author_keyword_year}   % → superscript number in text
+Write your text that requires referencing here.\cite{author_keyword_year}   % → superscript number in text
 ```
 
-The citation key (e.g. `smith_title_2024`) is shown in the **Citation Key** column in Zotero (visible after installing Better BibTeX).
+Citing a reference requires a citation key (e.g. `smith_title_2024`), which can be found in the **Citation Key** column in Zotero. To view the **Citation Key** column in Zotero:
+1. Install Better BibTeX
+2. **View → Columns → More Columns → Citation Key**
 
----
-
-## Outline of template structure
-
-```
-├── main.tex                             # Master document — start here
-├── preamble.tex                         # All packages, fonts, and formatting
-├── abbreviations.tex                    # Abbreviation definitions
-├── reference_library.bib                # BibTeX bibliography
-│
-├── front_matter/
-│   ├── abstract.tex
-│   ├── acknowledgement.tex
-│   ├── abbreviations_static.tex         # Printed abbreviations list (auto-generated)
-│   └── originality_statement.tex
-│
-├── titlepage/
-│   ├── titlepage.tex
-│   └── anu-logo-colour.pdf
-│
-├── experience/experience.tex            # Ch 1: Placement overview and competencies
-├── data_analysis/data_analysis.tex      # Ch 2: Project 1 — Data analysis
-├── surveillance/surveillance.tex        # Ch 3: Project 2 — Surveillance system
-├── epistudy/epistudy.tex                # Ch 4: Project 3 — Epidemiological study
-├── outbreak/outbreak.tex                # Ch 5: Project 4 — Outbreak investigation
-└── teaching/teaching.tex                # Ch 6: Teaching and field activities
-```
 ---
 
 ## Customising the template
