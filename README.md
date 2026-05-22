@@ -192,17 +192,17 @@ Citing a reference requires a citation key (e.g. `smith_title_2024`), which can 
 
 ### Step 2: Choose your document format
 
-ANU requires different margins depending on how your thesis will be submitted. The template defaults to the digital submission format. If you need to produce a print-ready version, change **one line in the `main.tex` and `preamble.tex` files** — keeping the option number the same in both.
+ANU requires different margins depending on how your thesis is submitted. The template defaults to the digital submission format. If you need to produce a print-ready version, change **one line in the `main.tex` and `preamble.tex` files**, keeping the option number the same in both.
 
-**In `main.tex`**, activate the correct `\documentclass` option:
+1. **In `main.tex`**, activate the correct `\documentclass` option:
 
 | Option | When to use |
 |---|---|
-| Option 1 (default) | Digital submission — all margins 2.5 cm |
-| Option 2 | Hard copy, single-sided printing — binding margin 4 cm |
-| Option 3 | Hard copy, double-sided printing — inner binding margin 4 cm |
+| Option 1 (default) | Digital submission (all margins 2.5 cm)|
+| Option 2 | Hard copy, single-sided printing (binding margin 4 cm) |
+| Option 3 | Hard copy, double-sided printing (inner binding margin 4 cm) |
 
-**In `preamble.tex`**, activate the matching `\usepackage{geometry}` option (same option number).
+2. **In `preamble.tex`**, activate the matching `\usepackage{geometry}` option (same option number).
 
 To activate an option, remove the `%` at the start of that line, and add `%` to the start of the currently active line.
 
@@ -227,7 +227,7 @@ Each chapter is a separate `.tex` file. Open the file for the chapter you want t
 
 #### How text works in LaTeX
 
-- Type normally — a blank line between paragraphs creates a new paragraph
+- Type normally, a blank line between paragraphs creates a new paragraph
 - No need to indent paragraphs (the template handles this)
 - **Bold text:** `\textbf{your text}`
 - *Italic text:* `\textit{your text}`
@@ -252,11 +252,10 @@ These characters have special meaning in LaTeX. If you need to type them in your
 
 ### Step 5: Add a figure
 
-A figure is any image — an epicurve, a map, a chart exported from R/Stata/SPSS/Excel.
+A figure is any image, an epicurve, a map, a chart exported from R/Stata/SPSS/Excel.
 
-**Save your image file** (as `.png` or `.pdf`) in the relevant chapter folder, e.g. `data_analysis/figures/`.
-
-**Then add this block** in your chapter where you want the figure to appear:
+1. **Save your image file** (as `.png` or `.pdf`) in the relevant chapter folder, e.g. `data_analysis/figures/`.
+2. **Then add this block** in your chapter where you want the figure to appear:
 
 ```latex
 \begin{figure}[H]
@@ -267,34 +266,34 @@ A figure is any image — an epicurve, a map, a chart exported from R/Stata/SPSS
 \end{figure}
 ```
 
-**What each part means:**
+**What each line means:**
 
-| Part | What it does |
+| Syntax | Description |
 |---|---|
 | `[H]` | Places the figure **H**ere — at this exact position in the text |
 | `\centering` | Centres the image on the page |
 | `width=0.85\textwidth` | Sets the image width to 85% of the text width — adjust as needed |
 | `{data_analysis/figures/my_figure.png}` | The path to your image file |
 | `\caption{...}` | The caption that appears **below** the figure |
-| `\label{fig:epicurve}` | A unique name for cross-referencing — **must start with `fig:`** |
+| `\label{fig:epicurve}` | A unique name for cross-referencing, **must start with `fig:`** |
 
-**To refer to the figure in your text:**
+**Cross referencing the figure in your chapter:**
 
 ```latex
 As shown in \cref{fig:epicurve}, cases peaked in week 3.
 ```
 
-This automatically produces: "As shown in Figure 1, cases peaked in week 3." — the number updates automatically if you add or move figures.
-
-> **Tip:** Always reference every figure in your text before it appears. A figure should never appear without being mentioned in the text.
+This produces: "As shown in Figure 1, cases peaked in week 3."\
+The figure number will update automatically if you add or move figures.
 
 ---
 
 ### Step 6: Add a table
 
-The simplest approach is to export your table from R, Stata, or Excel as a `.png` image and include it like a figure — but inside a `table` environment so LaTeX treats it as a table (numbering it in the list of tables).
+The simplest approach is to export your table from R, Stata, or Excel as a `.png` image and include it like a figure but inside a `table` environment so LaTeX treats it as a table (numbering it in the list of tables).
 
-**Save your table image** in the relevant chapter folder, e.g. `data_analysis/tables/`.
+1. **Save your table image** in the relevant chapter folder, e.g. `data_analysis/tables/`.
+2. **Then add this block** in your chapter where you want the table to appear:
 
 ```latex
 \begin{table}[H]
@@ -307,23 +306,14 @@ The simplest approach is to export your table from R, Stata, or Excel as a `.png
 \end{table}
 ```
 
-**Key differences from figures:**
-
-| | Tables | Figures |
-|---|---|---|
-| Caption position | **Above** the image | **Below** the image |
-| Label prefix | Must start with `tab:` | Must start with `fig:` |
-| Typical width | `0.95\textwidth` | `0.85\textwidth` |
-
-**To refer to the table in your text:**
+**Cross referencing the table in your chapter:**
 
 ```latex
 \cref{tab:age_groups} shows the distribution of cases by age group.
 ```
 
-This produces: "Table 1 shows the distribution of cases by age group."
-
-> **Tip:** `\cref{}` (lowercase c) produces "Table 1" or "Figure 1". `\Cref{}` (uppercase C) produces the same but capitalised — use `\Cref{}` at the start of a sentence.
+This produces: "Table 1 shows the distribution of cases by age group."\
+The table number will update automatically if you add or move tables.
 
 ---
 
