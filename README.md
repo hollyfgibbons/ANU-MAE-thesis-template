@@ -143,11 +143,7 @@ If you are using Overleaf, I do not suggest using the automated integration with
 
 2. Open `titlepage/` folder and upload placement organisation logo (as a `.png` or `.pdf`).
 
-- In `titlepage/titlepage.tex`, find the comment `% Replace the block below with your placement logo` and replace the TikZ grey-box placeholder block with:
-
-```latex
-\includegraphics[height=3.8cm]{titlepage/your_logo_filename.png}
-```
+- In `titlepage/titlepage.tex` replace `your_logo_filename.png` with the file name of your logo
 
 **Originality statement:**
 
@@ -299,9 +295,9 @@ The table number will update automatically if you add or move tables.
 
 The abbreviations system works in two places that are connected automatically:
 
-- **`abbreviations.tex`:** where you define abbreviations. This drives both the in-text expansion and the printed front matter list. I have kept all the abbreviations I used for my thesis, feel free to add or remove abbrevations.
+- **`abbreviations.tex`:** File where you define abbreviations. This drives both the in-text expansion and the printed front matter list. I have kept all the abbreviations I used for my thesis, feel free to add or remove abbrevations.
   
-- **`front_matter/abbreviations_static.tex`:** the abbreviations page printed in the thesis front matter. This generates a list of abbrevations that were actually used in your overall thesis. You do not need to edit this `.tex` file.
+- **`front_matter/abbreviations_static.tex`:** Abbreviations page printed in the thesis front matter. This generates a list of abbrevations that were actually used within your chapters. You do not need to edit this `.tex` file.
 
 #### Defining an abbreviation
 
@@ -327,7 +323,7 @@ Data were submitted to the \gls{WHO} surveillance system.
 - **First use in the chapter:** "Data were submitted to the World Health Organization (WHO) surveillance system."
 - **All subsequent uses:** "Data were submitted to the WHO surveillance system."
 
-Abbreviation tracking resets automatically at the start of each chapter, so each chapter re-expands abbreviations on first use. This is handled by `\glsresetall[abbreviations]` in each chapter file, do not remove those lines.
+Abbreviation tracking resets automatically at the start of each chapter, so each chapter re-expands abbreviations on first use. This is handled by `\glsresetall[abbreviations]` in each chapter file.
 
 #### For plural forms
 
@@ -346,7 +342,7 @@ To define a plural, use this format in `abbreviations.tex`:
 
 #### The front matter list
 
-The abbreviations page in the front matter is generated automatically. It lists abbreviations in alphabetical order, in the same visual style as the rest of the front matter, every abbreviation you used with `\gls{}` anywhere in your thesis. Abbreviations defined in `abbreviations.tex`. If you do not use `\gls{}` in your text for an abbreviation it will not be included in your automatically generated abbrevation list in the front matter.
+The abbreviations page in the front matter is generated automatically. It lists abbreviations in alphabetical order, in the same visual style as the rest of the front matter. If you do not use `\gls{}` in your text for an abbreviation it will not be included in your automatically generated abbrevation list in the front matter.
 
 **You do not need to edit `front_matter/abbreviations_static.tex`.** Recompile your document (twice if needed in Overleaf) and the list updates itself.
 
@@ -356,7 +352,7 @@ The abbreviations page in the front matter is generated automatically. It lists 
 
 ### Step 8: Citing references in `.tex` files
 
-Followed the instrcutions provided in the section: [Setting up reference integration](https://github.com/hollyfgibbons/ANU-MAE-thesis-template/blob/main/README.md#setting-up-reference-integration)
+Follow the instrcutions provided in the section: [Setting up reference integration](https://github.com/hollyfgibbons/ANU-MAE-thesis-template/blob/main/README.md#setting-up-reference-integration)
 
 Your `reference_library.bib` file will contain reference entires similar to the examples below:
 
@@ -385,8 +381,9 @@ Your `reference_library.bib` file will contain reference entires similar to the 
 }
 ```
 
-Citing either of the references above, you will need their **Citation Key**. The citation key is the first item after the `@article{` or `@online{`:\
-In the examples above it is `smith_article_title_2024` and `who_webpage_2025`.
+You will need the **Citation Key** for each of your references in order to cite them.
+
+In these examples, the citation keys is the first item after `@article{` or `@online{`: which are `smith_article_title_2024` and `who_webpage_2025`.
 
 Citation key's can also be found in the citation key column in Zotero. To view the citation key column in Zotero:
 1. Install Better BibTeX
@@ -422,21 +419,7 @@ The label must be defined in the relevant file with `\label{...}`. Each chapter 
 
 ---
 
-### Step 10: Remove empty local lists
-
-At the top of each chapter there is a local list of tables and a local list of figures. If a chapter has no tables or figures, these pages will be blank and should be removed.
-
-**To remove an empty local list**, find these lines near the top of the chapter file and delete them (or add a `%` at the start of each line to comment them out):
-
-```latex
-\locallistoftables    % remove if this chapter has no tables
-\locallistoffigures   % remove if this chapter has no figures
-\clearpage            % remove this \clearpage if you removed both lists above
-```
-
----
-
-### Step 11: Add or modify sections
+### Step 10: Add or modify sections
 
 Each chapter uses `\section{}`, `\subsection{}`, and `\subsubsection{}` to organise content:
 
@@ -461,7 +444,7 @@ The `*` means the paragraph heading is not numbered.
 
 ---
 
-### Step 12: Add an appendix to a chapter
+### Step 11: Add an appendix to a chapter
 
 Each chapter has a `\begin{subappendices}...\end{subappendices}` block at the end. Inside it, each appendix is a `\section{}`.
 
@@ -487,6 +470,21 @@ PDF appendices (e.g. a factsheet, presentation slides, or manuscript) are includ
 Upload your file to the chapter's `appendices/` subfolder before compiling. Adjust the number of `\includegraphics` lines to match the number of pages in your PDF.
 
 ---
+
+### Step 12: Remove empty local lists
+
+At the top of each chapter there is a local list of tables and a local list of figures. If a chapter has no tables or figures, these pages will be blank and should be removed.
+
+**To remove an empty local list**, find these lines near the top of the chapter file and delete them (or add a `%` at the start of each line to comment them out):
+
+```latex
+\locallistoftables    % remove if this chapter has no tables
+\locallistoffigures   % remove if this chapter has no figures
+\clearpage            % remove this \clearpage if you removed both lists above
+```
+
+---
+
 
 ## Reference lists for each chapter
 
