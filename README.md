@@ -101,9 +101,9 @@ INSTRUCTIONS COMING SOON
 
 ## Setting up reference integration
 
-For referencing in LaTex I suggest using a reference management software such as Zotero. I have outlined two options for setting up reference integration with Zotero.
+I suggest using a reference management software such as Zotero. I have outlined two options for setting up reference integration with Zotero below.
 
-If you are using Overleaf, I do not suggest using the automated integration with Zotero because the imported reference data cannot be edited and is harder to format.
+If you are using Overleaf, I do not suggest using the automated integration with Zotero because the imported reference entries cannot be edited and are harder to format.
 
 ### Option A: One-time export
 1. In Zotero, select your library or a collection
