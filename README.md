@@ -57,9 +57,9 @@ You write your content in `.tex` files using Overleaf (or a local text editor). 
 
 ## Getting started
 
-The template can be downloaded and used in either online (Overleaf) or locally on your computer. Please see the comparison table below to help decide which one is best for you.
+The template can be downloaded and used in either online or locally on your computer. Please see the comparison table below to help decide which one is best for you.
 
-| Online | Locally |
+| Online (Overleaf) | Locally (TeXstudio)|
 |----------|--------|
 | Runs in your browser | Runs on your computer |
 | No software installation required | Requires installing a LaTeX distribution and tools |
