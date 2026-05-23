@@ -7,6 +7,20 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
+% Pre-register xcolor options so makecell loading xcolor later doesn't warn
+\PassOptionsToPackage{table,xcdraw}{xcolor}
+
+% Declare Unicode characters that may appear in bibliography titles/fields
+% so pdfLaTeX does not error on them (Greek letters, math symbols).
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}   % α
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}    % β
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}   % γ
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}      % μ (Greek mu, distinct from µ micro)
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}     % ≥
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}     % ≤
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}        % − (minus sign)
+\DeclareUnicodeCharacter{F6D9}{\relax}                % private-use glyph in some PDF paths
+
 % Activate the geometry line that matches your chosen option in main.tex.
 % OPTION 1 — Digital submission: all margins 2.5 cm
 \usepackage[a4paper, margin=2.5cm]{geometry}
@@ -46,7 +60,7 @@
 \usepackage{threeparttable}
 \usepackage{float}
 \usepackage{multirow}
-\usepackage[table,xcdraw]{xcolor}
+\usepackage{xcolor}
 \usepackage{makecell}
 \usepackage{array}
 \renewcommand{\arraystretch}{1.2}
@@ -82,6 +96,10 @@
   \vspace{0.4em}%
   \@dottedtocline{1}{1.5em}{3.2em}{\bfseries #1}{\bfseries #2}%
 }
+% Subsection numbers start level with the section name (indent = 1.5em + 3.2em = 4.7em)
+\renewcommand*\l@subsection[2]{%
+  \@dottedtocline{2}{4.7em}{3.2em}{#1}{#2}%
+}
 \makeatother
 
 % --- Hide Contents from TOC itself but add PDF bookmark ---
@@ -108,31 +126,25 @@
 }
 
 % ── Per-chapter local figure / table lists ─────────────────────────────────
-% etoc's [lof,lot] option conflicts with hyperref on LaTeX 2025-11-01 because
-% it redefines \addcontentsline via \def at \begin{document}, bypassing the
-% kernel hook system.  The reimplementation below avoids that:
-%   1. A hook mirrors each lof/lot \addcontentsline call into the .toc file
-%      as a custom 'lofitem'/'lotitem' entry.
-%   2. \locallistoffigures / \locallistoftables read these back per-chapter
-%      using etoc's \localtableofcontents, hiding all standard TOC entries.
-\makeatletter
-\AddToHookWithArguments{cmd/addcontentsline/before}[lof-to-toc]{%
-  \def\@ltl@ext{#1}%
-  \ifx\@ltl@ext\Etoc@lofext
-    \addtocontents{toc}{\protect\contentsline{lofitem}{#3}{\thepage}{}}%
-  \else
-    \ifx\@ltl@ext\Etoc@lotext
-      \addtocontents{toc}{\protect\contentsline{lotitem}{#3}{\thepage}{}}%
-    \fi
-  \fi
-}
-\makeatother
+% Strategy: mirror each lof/lot \addcontentsline call into the .toc file as
+% custom 'lofitem'/'lotitem' entries. \locallistoffigures / \locallistoftables
+% read those back per-chapter via etoc's \localtableofcontents.
+%
+% The patch is installed via \AddToHook{begindocument/end} — which fires after
+% ALL other begindocument hooks (including hyperref's), so we capture the truly
+% final \addcontentsline.  Using \edef expands the file-extension argument
+% before comparison so the \ifx test works correctly even when the argument is
+% a \csname...\endcsname token.  The hook body contains NO # characters,
+% avoiding the LaTeX 2025 L3 hook issue where ## is not halved to #.
 
-\etocsetlevel{lofitem}{6}
-\etocsetlevel{lotitem}{6}
+\etocsetlevel{lofitem}{5}
+\etocsetlevel{lotitem}{5}
 
 \renewcommand{\locallistoffigures}{%
   \begingroup
+  \etocsettagdepth{mtchapter}{5}%
+  \etocsetlevel{lotitem}{6}%     % push tables to etoc's "never shown" sentinel depth
+  \etocsetlevel{lofitem}{5}%     % keep figures at depth 5
   \RaggedRight
   \setlength{\parskip}{0.5em}
   \etocsettocstyle{\section*{List of figures}}{}%
@@ -142,15 +154,17 @@
   \etocsetstyle{subsubsection}{}{}{}{}%
   \etocsetstyle{paragraph}{}{}{}{}%
   \etocsetstyle{subparagraph}{}{}{}{}%
-  \etocsetstyle{lotitem}{}{}{}{}%
-  \etocsetstyle{lofitem}{}{}{\noindent\etocname\dotfill\etocpage\par}{}%
-  \etocsetnexttocdepth{6}%
+  \etocsetstyle{lofitem}{}{}{\noindent\hangindent=2.5em\hangafter=1\etoclink{\makebox[2.5em][l]{\etocnumber}\etocname}\dotfill\etocthelinkedpage\par}{}%
+  \etocsetnexttocdepth{5}%
   \localtableofcontents
   \endgroup
 }
 
 \renewcommand{\locallistoftables}{%
   \begingroup
+  \etocsettagdepth{mtchapter}{5}%
+  \etocsetlevel{lofitem}{6}%     % push figures to etoc's "never shown" sentinel depth
+  \etocsetlevel{lotitem}{5}%     % keep tables at depth 5
   \RaggedRight
   \setlength{\parskip}{0.5em}
   \etocsettocstyle{\section*{List of tables}}{}%
@@ -160,12 +174,32 @@
   \etocsetstyle{subsubsection}{}{}{}{}%
   \etocsetstyle{paragraph}{}{}{}{}%
   \etocsetstyle{subparagraph}{}{}{}{}%
-  \etocsetstyle{lofitem}{}{}{}{}%
-  \etocsetstyle{lotitem}{}{}{\noindent\etocname\dotfill\etocpage\par}{}%
-  \etocsetnexttocdepth{6}%
+  \etocsetstyle{lotitem}{}{}{\noindent\hangindent=2.5em\hangafter=1\etoclink{\makebox[2.5em][l]{\etocnumber}\etocname}\dotfill\etocthelinkedpage\par}{}%
+  \etocsetnexttocdepth{5}%
   \localtableofcontents
   \endgroup
 }
+
+% ── Per-chapter lof/lot mirror patch ────────────────────────────────────────
+\makeatletter
+\def\@ltl@lof{lof}%
+\def\@ltl@lot{lot}%
+\def\@ltl@patched@addcontentsline#1#2#3{%
+  \@ltl@orig@addcontentsline{#1}{#2}{#3}%
+  \edef\@ltl@ext{#1}%
+  \ifx\@ltl@ext\@ltl@lof
+    \addtocontents{toc}{\protect\contentsline{lofitem}{#3}{\thepage}{\@currentHref}}%
+  \else
+    \ifx\@ltl@ext\@ltl@lot
+      \addtocontents{toc}{\protect\contentsline{lotitem}{#3}{\thepage}{\@currentHref}}%
+    \fi
+  \fi
+}%
+\AddToHook{begindocument/end}{%
+  \global\let\@ltl@orig@addcontentsline\addcontentsline
+  \global\let\addcontentsline\@ltl@patched@addcontentsline
+}%
+\makeatother
 
 % --- Front matter unnumbered chapter heading ---
 \newcommand{\frontmatterchapter}[1]{%
@@ -339,6 +373,10 @@
 \titlespacing*{\paragraph}{0pt}{0.5em}{0.5em}
 
 
+% ===================== Bibliography =====================
+\renewcommand{\bibsection}{\section*{References}\addcontentsline{toc}{section}{References}}
+
+
 % ===================== Hyperlinks =====================
 \usepackage{hyperref}
 \hypersetup{
@@ -370,3 +408,7 @@
 % ===================== Silence Warnings =====================
 \usepackage{silence}
 \WarningFilter{latex}{Underfull \hbox}
+% xcolor is loaded by makecell after we already loaded it — the duplicate is harmless
+\WarningFilter{latex}{Package "xcolor" has already been loaded}
+% abbreviations_static.tex uses a manual tabbing list instead of \printglossary
+\WarningFilter{glossaries}{No \printglossary}
