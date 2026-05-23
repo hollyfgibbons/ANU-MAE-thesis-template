@@ -57,9 +57,9 @@ You write your content in `.tex` files using Overleaf (or a local text editor). 
 
 ## Getting started
 
-The template can be downloaded and used in either Overleaf (online) or locally on your computer. Please see the comparison table below to help decide which one is best for you.
+The template can be downloaded and used in either online (Overleaf) or locally on your computer. Please see the comparison table below to help decide which one is best for you.
 
-| Overleaf | Locally |
+| Online | Locally |
 |----------|--------|
 | Runs in your browser | Runs on your computer |
 | No software installation required | Requires installing a LaTeX distribution and tools |
@@ -70,7 +70,10 @@ The template can be downloaded and used in either Overleaf (online) or locally o
 | Requires internet connection | Works offline |
 | Suitable for beginners | Better for advanced users or large projects |
 
-### How to open the template in Overleaf
+### How to open the template in online (Overleaf)
+
+All ANU staff and students have access to Overleaf's professional upgrades if they login with single sign-on (SSO) and use their university email address. Please find additional support regarding the use of Overleaf through ANU, [here](https://services.anu.edu.au/information-technology/software-systems/overleaf).
+
 1. Download this repository as a ZIP file (*GitHub → Code → Download ZIP*)
 2. In Overleaf: *New Project → Upload Project* → select the ZIP
 3. Open *Menu* (top left) → *Compiler* → select **pdfLaTeX**
@@ -153,18 +156,29 @@ If you are using Overleaf, I do not suggest using the automated integration with
 ### Option A: One-time export
 1. In Zotero, select your library or a collection
 2. **File → Export Library** (or right-click a collection → **Export Collection**)
-3. Format: **Better BibLaTeX** *(requires the Better BibTeX plugin — see Option B)*
-4. Save as `reference_library.bib` and replace the existing file in your project
-5. In Overleaf: upload the new `.bib` via the file tree on the left
+3. Save and replace `reference_library.bib` files:
+   
+   - **Overleaf:** Save as `reference_library.bib` and replace the existing file in your project
+  
+   - **Locally:** Replace the `reference_library.bib` file in the `ANU-MAE-thesis-template-main` folder (downloaded from Git)
 
 ### Option B: Continuous sync (recommended)
 1. Install the [Better BibTeX plugin](https://retorque.re/zotero-better-bibtex/) for Zotero
 2. Right-click your Zotero library or collection → **Export Collection**
    - Format: **Better BibLaTeX**
+     
    - Tick **Keep updated**
-   - Save as `reference_library.bib`
-3. Zotero keeps the exported `.bib` file up to date on your computer automatically
-4. Re-upload to Overleaf whenever you add new references
+3. Save as `reference_library.bib`
+   
+   - **Overleaf:** Save as `reference_library.bib` and replace the existing file in your project
+  
+   - **Locally:** Replace the `reference_library.bib` file in the `ANU-MAE-thesis-template-main` folder (downloaded from Git)
+  
+4. Zotero keeps the exported `.bib` file up to date on your computer automatically
+
+   - **Overleaf:** Re-upload to Overleaf whenever you add new references
+  
+   - **Locally:** File will automatically update
 
 
 ## Customising the template
@@ -397,7 +411,7 @@ The abbreviations page in the front matter is generated automatically. It lists 
 
 ### Step 8: Citing references in `.tex` files
 
-Follow the instrcutions provided in the section: [Setting up reference integration](https://github.com/hollyfgibbons/ANU-MAE-thesis-template/blob/main/README.md#setting-up-reference-integration)
+Follow the instrcutions provided for [setting up reference integration](https://github.com/hollyfgibbons/ANU-MAE-thesis-template/blob/main/README.md#setting-up-reference-integration).
 
 Your `reference_library.bib` file will contain reference entires similar to the examples below:
 
