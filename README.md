@@ -72,7 +72,7 @@ The template can be downloaded and used in either online or locally on your comp
 
 ### How to open the template in online (Overleaf)
 
-All ANU staff and students have access to Overleaf's professional upgrades if they login with single sign-on (SSO) and use their university email address. Please find additional support regarding the use of Overleaf through ANU, [here](https://services.anu.edu.au/information-technology/software-systems/overleaf).
+All ANU staff and students have access to Overleaf's professional upgrades if they login with single sign-on (SSO) and use their university email address. Please find additional support regarding the use of Overleaf through ANU [here](https://services.anu.edu.au/information-technology/software-systems/overleaf).
 
 1. Download this repository as a ZIP file (*GitHub → Code → Download ZIP*)
 2. In Overleaf: *New Project → Upload Project* → select the ZIP
@@ -213,6 +213,7 @@ If you are using Overleaf, I do not suggest using the automated integration with
 - `YOUR FULL NAME` → your name
 - `DATE OF SUBMISSION` → e.g. `1st~October~2025`
   *(The `~` symbol prevents a line break between the day and month)*
+- `30,000` → update word count
 
 **Hyperlinks:**
 
