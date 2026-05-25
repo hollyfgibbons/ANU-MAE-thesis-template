@@ -202,7 +202,7 @@ If you are using Overleaf, I do not suggest using the automated integration with
 
 2. Open `titlepage/` folder and upload placement organisation logo (as a `.png` or `.pdf`).
 
-- In `titlepage/titlepage.tex` replace `your_logo_filename.png` with the file name of your logo
+- In `titlepage/titlepage.tex` replace `nike.png` with the file name of your logo
 
 **Originality statement:**
 
